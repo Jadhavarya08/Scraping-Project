@@ -50,11 +50,11 @@ Output file will be saved as:
 
 Copy code
 {output_file}
-🌐 Websites / Sources Used
+##🌐 Websites / Sources Used
 Enigma Business Directory
 {source_url}
 
-🚨 Missing Categories / Limitations
+##🚨 Missing Categories / Limitations
 Some categories may not have enough businesses listed.
 
 Some businesses hide emails → fewer results.
@@ -62,7 +62,7 @@ Some businesses hide emails → fewer results.
 If less than 10 businesses are found, the output file includes a note:
 "Less than 10 record available for this category".
 
-⚠️ Challenges Faced
+##⚠️ Challenges Faced
 Dynamic content loading (JavaScript not supported by BeautifulSoup).
 
 Hidden or obfuscated emails (e.g., info [at] company dot com).
@@ -73,12 +73,12 @@ Websites blocking scrapers → required User-Agent headers.
 
 Different page structures across sites.
 
-✅ Example Output (Excel)
+##✅ Example Output (Excel)
 Business Name	Email	Phone	Website	Address	Source URL	Category
 ABC Coaching	info@abccoach.com	(123) 456-7890	https://abccoach.com	123 Main St, Kansas City	Enigma URL	Coaching Institutes
 XYZ Academy	contact@xyz.com	(987) 654-3210	https://xyzacademy.com	45 Elm St, Wichita, KS	Enigma URL	Coaching Institutes
 
-📅 Generated on: {datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")}
+##📅 Generated on: {datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")}
 """
 
 python
