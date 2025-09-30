@@ -33,31 +33,29 @@ git clone https://github.com/your-username/kansas-business-scraper.git
 cd kansas-business-scraper
 Install dependencies:
 
-bash
-Copy code
+
 pip install -r requirements.txt
 Or install manually:
 
 
 pip install requests beautifulsoup4 pandas openpyxl
-🚀 Usage
-Run the scraper:
+## 🚀 Usage
+- Run the scraper:
 
 
-python kansas_scraper.py
-When prompted, enter a category (example):
+- python kansas_scraper.py
+- When prompted, enter a category (example):
 
 
-educational-institution/
-📂 Output
+- educational-institution/
+
+## 📂 Output
 Results are saved as:
 
-php-template
-Copy code
+
 Output_Kansas_<category>_scraped_data.xlsx
 Example:
 
-Copy code
 Output_Kansas_educational-institution_scraped_data.xlsx
 
 ## 📊 Example Output (Excel)
