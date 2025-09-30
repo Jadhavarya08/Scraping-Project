@@ -1,94 +1,99 @@
-# 📘 README – Kansas Businesses Scraping Project
+📘 Kansas Businesses Scraping Project
+📌 Project Overview
 
-## 📌 Project Overview
-This project extracts business information for Kansas from **Enigma Business Directory**.
+This project extracts business information for Kansas from the Enigma Business Directory
+.
 
-The pipeline works in two stages:
+The workflow:
 
-1. **Link Scraping** – Collects website links for the given category: `{category}`.
-2. **Business Scraping** – Visits each website and extracts:
-   - Business Name
-   - Email(s)
-   - Phone Number
-   - Website
-   - Address
-   - Source URL
-   - Category
+Scrape Links – Collects business website links for a given category.
 
-Final structured output is saved as:  
-**{output_file}**
+Scrape Details – Visits each website and extracts details such as:
 
----
+Business Name
 
-## 📂 Deliverables
-1. **Python Script(s)**  
-   - `kansas_scraper.py` → End-to-end scraper for links + details.
+Email(s)
 
-2. **Excel Files**
-   - `kansas_businesses.xlsx` → Raw scraped links.  
-   - `{output_file}` → Final output with detailed business info.
+Phone Number
 
-3. **README File (this file)**  
-   - Describes sources, missing categories, and challenges.
+Website
 
----
+Address
 
-## 🛠️ Setup Instructions
-1. Install dependencies:
-```bash
+Source URL
+
+Category
+
+Final results are stored in structured Excel files.
+
+📂 Deliverables
+
+Scripts
+
+kansas_scraper.py → End-to-end scraper for links and details.
+
+generate_readme.py → Generates this README file automatically.
+
+Excel Files
+
+kansas_businesses.xlsx → Raw scraped links.
+
+Output_Kansas_<Category>_scraped_data.xlsx → Final detailed business data.
+
+README.md
+
+Project overview, setup, sources, challenges, and examples.
+
+🛠️ Setup Instructions
+1. Clone Repository
+git clone https://github.com/your-username/kansas-business-scraper.git
+cd kansas-business-scraper
+
+2. Install Dependencies
 pip install requests beautifulsoup4 pandas openpyxl
-Run the scraper:
 
-bash
-Copy code
+3. Run the Scraper
 python kansas_scraper.py
-Enter category when prompted (example):
 
-Copy code
+4. Enter Category
+
+Example input:
+
 educational-institution/
-Output file will be saved as:
 
-Copy code
-{output_file}
-##🌐 Websites / Sources Used
+5. Output File
+Output_Kansas_educational_institution_scraped_data.xlsx
+
+🌐 Websites / Sources Used
+
 Enigma Business Directory
-{source_url}
 
-##🚨 Missing Categories / Limitations
+🚨 Missing Categories / Limitations
+
 Some categories may not have enough businesses listed.
 
-Some businesses hide emails → fewer results.
+Many businesses hide emails (e.g., use forms instead).
 
-If less than 10 businesses are found, the output file includes a note:
+If fewer than 10 businesses are found, the Excel output includes a note:
 "Less than 10 record available for this category".
 
-##⚠️ Challenges Faced
-Dynamic content loading (JavaScript not supported by BeautifulSoup).
+⚠️ Challenges Faced
 
-Hidden or obfuscated emails (e.g., info [at] company dot com).
+Dynamic content loading → Some pages use JavaScript, not supported by BeautifulSoup.
 
-Duplicate business entries.
+Obfuscated emails → e.g., info [at] company dot com.
 
-Websites blocking scrapers → required User-Agent headers.
+Duplicates → Filtered out during scraping.
 
-Different page structures across sites.
+Scraper blocking → Required using headers (User-Agent).
 
-##✅ Example Output (Excel)
+Varied page structures → Different websites required flexible selectors.
+
+✅ Example Output (Excel)
 Business Name	Email	Phone	Website	Address	Source URL	Category
-ABC Coaching	info@abccoach.com	(123) 456-7890	https://abccoach.com	123 Main St, Kansas City	Enigma URL	Coaching Institutes
-XYZ Academy	contact@xyz.com	(987) 654-3210	https://xyzacademy.com	45 Elm St, Wichita, KS	Enigma URL	Coaching Institutes
-
-##📅 Generated on: {datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")}
-"""
-
-python
-Copy code
-with open("README.txt", "w", encoding="utf-8") as f:
-    f.write(readme_content.strip())
-
-print("✅ README.txt file generated successfully.")
-if name == "main":
-# Example usage (you can pass real values after scraping)
-category = "educational-institution/"
-source_url = "https://www.enigma.com/directory/ks/all-cities/educational-institution/"
-output_file = "Output_Kansas_educational_institution_scraped_data.xlsx"
+ABC Coaching	info@abccoach.com
+	(123) 456-7890	https://abccoach.com
+	123 Main St, Kansas City	Enigma URL	Coaching Institutes
+XYZ Academy	contact@xyz.com
+	(987) 654-3210	https://xyzacademy.com
+	45 Elm St, Wichita, KS	Enigma URL	Coaching Institutes
