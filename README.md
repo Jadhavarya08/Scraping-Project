@@ -28,7 +28,7 @@ All results are saved into **Excel files** for easy analysis.
 
 Clone the repository:
 
-```bash
+
 git clone https://github.com/your-username/kansas-business-scraper.git
 cd kansas-business-scraper
 Install dependencies:
@@ -38,19 +38,16 @@ Copy code
 pip install -r requirements.txt
 Or install manually:
 
-bash
-Copy code
+
 pip install requests beautifulsoup4 pandas openpyxl
 🚀 Usage
 Run the scraper:
 
-bash
-Copy code
+
 python kansas_scraper.py
 When prompted, enter a category (example):
 
-bash
-Copy code
+
 educational-institution/
 📂 Output
 Results are saved as:
@@ -62,7 +59,8 @@ Example:
 
 Copy code
 Output_Kansas_educational-institution_scraped_data.xlsx
-📊 Example Output (Excel)
+
+## 📊 Example Output (Excel)
 Business Name	Email	Phone	Website	Address	Source URL	Category
 ABC Coaching	info@abccoach.com	(123) 456-7890	https://abccoach.com	123 Main St, Kansas City	Enigma URL	Coaching Institutes
 XYZ Academy	contact@xyz.com	(987) 654-3210	https://xyzacademy.com	45 Elm St, Wichita, KS	Enigma URL	Coaching Institutes
@@ -70,21 +68,21 @@ XYZ Academy	contact@xyz.com	(987) 654-3210	https://xyzacademy.com	45 Elm St, Wic
 🌐 Sources
 Enigma Business Directory
 
-⚠️ Limitations
-Some categories may not have enough businesses.
+## ⚠️ Limitations
+- Some categories may not have enough businesses.
 
-Many websites hide emails (forms or obfuscation).
+- Many websites hide emails (forms or obfuscation).
 
-JavaScript-heavy sites are not supported (BeautifulSoup limitation).
+- JavaScript-heavy sites are not supported (BeautifulSoup limitation).
 
-Website blocking may occur → handled using User-Agent headers.
+- Website blocking may occur → handled using User-Agent headers.
 
-🛠️ Challenges Faced
-Dynamic content loading
+## 🛠️ Challenges Faced
+- Dynamic content loading
 
-Hidden / obfuscated emails
+- Hidden / obfuscated emails
 
-Duplicate business entries
+- Duplicate business entries
 
-Varied website structures
+- Varied website structures
 
