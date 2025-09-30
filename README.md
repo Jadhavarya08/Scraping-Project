@@ -1,137 +1,94 @@
-README – Kansas Businesses Scraping Project
-📌 Project Overview
+# 📘 README – Kansas Businesses Scraping Project
 
-This project extracts business information for Kansas from Enigma Business Directory (https://www.enigma.com/directory/ks/
-).
+## 📌 Project Overview
+This project extracts business information for Kansas from **Enigma Business Directory**.
+
 The pipeline works in two stages:
 
-scrape_links.py – Scrapes business website links for a given category (e.g., educational institutions, coaching institutes, etc.) and saves them into an Excel file.
+1. **Link Scraping** – Collects website links for the given category: `{category}`.
+2. **Business Scraping** – Visits each website and extracts:
+   - Business Name
+   - Email(s)
+   - Phone Number
+   - Website
+   - Address
+   - Source URL
+   - Category
 
-scrape_single_page.py – Visits each business website, extracts details (name, email, phone, address, etc.), and saves them into a structured Excel sheet.
+Final structured output is saved as:  
+**{output_file}**
 
-The output can then be used for analysis, marketing, or category-wise business listing.
+---
 
-📂 Deliverables
+## 📂 Deliverables
+1. **Python Script(s)**  
+   - `kansas_scraper.py` → End-to-end scraper for links + details.
 
-Python Scripts
+2. **Excel Files**
+   - `kansas_businesses.xlsx` → Raw scraped links.  
+   - `{output_file}` → Final output with detailed business info.
 
-scrape_links.py → Scrapes links from Enigma directory pages.
+3. **README File (this file)**  
+   - Describes sources, missing categories, and challenges.
 
-scrape_single_page.py → Scrapes details from each collected website.
+---
 
-Excel Files
-
-kansas_businesses.xlsx → Contains scraped links of businesses from the category page.
-
-Output_Kansas_<Category>_scraped_data.xlsx → Contains full business details (emails, phone, etc.).
-
-README File (this file)
-
-Describes sources, instructions, missing categories, and challenges.
-
-🛠️ Setup Instructions
-1. Install Dependencies
-
-Make sure Python 3.x is installed.
-Then install required libraries:
-
+## 🛠️ Setup Instructions
+1. Install dependencies:
+```bash
 pip install requests beautifulsoup4 pandas openpyxl
+Run the scraper:
 
-2. Run the Scripts
+bash
+Copy code
+python kansas_scraper.py
+Enter category when prompted (example):
 
-Step 1 – Scrape Links
+Copy code
+educational-institution/
+Output file will be saved as:
 
-python scrape_links.py
-
-
-This saves an Excel file named kansas_businesses.xlsx (or Coaching Institutes.xlsx if running the demo).
-
-Step 2 – Scrape Business Details
-
-python scrape_single_page.py
-
-
-The script will ask for a category name (e.g., "Coaching Institutes").
-
-It will read kansas_businesses.xlsx, visit each link, and extract:
-
-Business Name
-
-Email(s)
-
-Phone Number
-
-Website
-
-Address
-
-Source URL
-
-Category
-
-Final structured output is saved as:
-
-Output_Kansas_<Category>_scraped_data.xlsx
-
+Copy code
+{output_file}
 🌐 Websites / Sources Used
-
-Enigma Business Directory: https://www.enigma.com/directory/ks/
-
-(e.g., https://www.enigma.com/directory/ks/all-cities/educational-institution/
-)
-
-📊 Data Fields Collected
-
-Business Name
-
-Email(s)
-
-Phone Number
-
-Website
-
-Address
-
-Source URL (where scraped from)
-
-Category
+Enigma Business Directory
+{source_url}
 
 🚨 Missing Categories / Limitations
-
 Some categories may not have enough businesses listed.
 
-Some businesses do not expose emails publicly → fewer email results.
+Some businesses hide emails → fewer results.
 
-A few websites block scrapers or load content dynamically → data not extracted.
-
-If less than 10 businesses are found for a category, the output file will contain a message row:
+If less than 10 businesses are found, the output file includes a note:
 "Less than 10 record available for this category".
 
 ⚠️ Challenges Faced
+Dynamic content loading (JavaScript not supported by BeautifulSoup).
 
-Dynamic content: Some websites load details with JavaScript → not captured by BeautifulSoup.
+Hidden or obfuscated emails (e.g., info [at] company dot com).
 
-Hidden/Obfuscated emails: Many sites use formats like info [at] company dot com, which required regex + replacements.
+Duplicate business entries.
 
-Duplicate entries: Multiple links to the same business had to be filtered out.
+Websites blocking scrapers → required User-Agent headers.
 
-Rate limiting / blocks: Some websites block automated scrapers, so User-Agent headers were added.
+Different page structures across sites.
 
-Data inconsistencies: Different websites use different layouts → extraction logic had to cover multiple selectors.
-
-✅ Output Example (Excel)
+✅ Example Output (Excel)
 Business Name	Email	Phone	Website	Address	Source URL	Category
-ABC Coaching	info@abccoach.com
-	(123) 456-7890	https://abccoach.com
-	123 Main St, Kansas City, KS	Enigma URL	Coaching Institutes
-XYZ Academy	contact@xyz.com
-	(987) 654-3210	https://xyzacademy.com
-	45 Elm St, Wichita, KS	Enigma URL	Coaching Institutes
-📌 Notes
+ABC Coaching	info@abccoach.com	(123) 456-7890	https://abccoach.com	123 Main St, Kansas City	Enigma URL	Coaching Institutes
+XYZ Academy	contact@xyz.com	(987) 654-3210	https://xyzacademy.com	45 Elm St, Wichita, KS	Enigma URL	Coaching Institutes
 
-All scripts include comments explaining each step.
+📅 Generated on: {datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")}
+"""
 
-Output is Excel-compatible (.xlsx) for easy analysis.
+python
+Copy code
+with open("README.txt", "w", encoding="utf-8") as f:
+    f.write(readme_content.strip())
 
-Can be extended to multiple categories by changing the base URL and category input.# Scraping-Project
-This project extracts business information for Kansas from Enigma Business Directory
+print("✅ README.txt file generated successfully.")
+if name == "main":
+# Example usage (you can pass real values after scraping)
+category = "educational-institution/"
+source_url = "https://www.enigma.com/directory/ks/all-cities/educational-institution/"
+output_file = "Output_Kansas_educational_institution_scraped_data.xlsx"
