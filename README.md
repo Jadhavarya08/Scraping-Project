@@ -1,99 +1,90 @@
-📘 Kansas Businesses Scraping Project
-📌 Project Overview
+# 🏢 Kansas Business Scraper
 
-This project extracts business information for Kansas from the Enigma Business Directory
-.
+A Python-based web scraper that collects **business details in Kansas** from the  
+[Enigma Business Directory](https://www.enigma.com/directory/ks/).
 
-The workflow:
+The scraper extracts:
+- ✅ Business Name  
+- ✅ Email(s)  
+- ✅ Phone Number  
+- ✅ Website  
+- ✅ Address  
+- ✅ Category & Source URL  
 
-Scrape Links – Collects business website links for a given category.
+All results are saved into **Excel files** for easy analysis.
 
-Scrape Details – Visits each website and extracts details such as:
+---
 
-Business Name
+## ⚡ Features
+- Scrapes business listings from a given **category**.  
+- Cleans and stores data in structured **Excel (.xlsx)** format.  
+- Handles **duplicates** automatically.  
+- Adds a note if **less than 10 records** are found.  
+- Built with **Requests + BeautifulSoup + Pandas**.  
 
-Email(s)
+---
 
-Phone Number
+## 📦 Installation
 
-Website
+Clone the repository:
 
-Address
-
-Source URL
-
-Category
-
-Final results are stored in structured Excel files.
-
-📂 Deliverables
-
-Scripts
-
-kansas_scraper.py → End-to-end scraper for links and details.
-
-generate_readme.py → Generates this README file automatically.
-
-Excel Files
-
-kansas_businesses.xlsx → Raw scraped links.
-
-Output_Kansas_<Category>_scraped_data.xlsx → Final detailed business data.
-
-README.md
-
-Project overview, setup, sources, challenges, and examples.
-
-🛠️ Setup Instructions
-1. Clone Repository
+```bash
 git clone https://github.com/your-username/kansas-business-scraper.git
 cd kansas-business-scraper
+Install dependencies:
 
-2. Install Dependencies
+bash
+Copy code
+pip install -r requirements.txt
+Or install manually:
+
+bash
+Copy code
 pip install requests beautifulsoup4 pandas openpyxl
+🚀 Usage
+Run the scraper:
 
-3. Run the Scraper
+bash
+Copy code
 python kansas_scraper.py
+When prompted, enter a category (example):
 
-4. Enter Category
-
-Example input:
-
+bash
+Copy code
 educational-institution/
+📂 Output
+Results are saved as:
 
-5. Output File
-Output_Kansas_educational_institution_scraped_data.xlsx
+php-template
+Copy code
+Output_Kansas_<category>_scraped_data.xlsx
+Example:
 
-🌐 Websites / Sources Used
+Copy code
+Output_Kansas_educational-institution_scraped_data.xlsx
+📊 Example Output (Excel)
+Business Name	Email	Phone	Website	Address	Source URL	Category
+ABC Coaching	info@abccoach.com	(123) 456-7890	https://abccoach.com	123 Main St, Kansas City	Enigma URL	Coaching Institutes
+XYZ Academy	contact@xyz.com	(987) 654-3210	https://xyzacademy.com	45 Elm St, Wichita, KS	Enigma URL	Coaching Institutes
 
+🌐 Sources
 Enigma Business Directory
 
-🚨 Missing Categories / Limitations
+⚠️ Limitations
+Some categories may not have enough businesses.
 
-Some categories may not have enough businesses listed.
+Many websites hide emails (forms or obfuscation).
 
-Many businesses hide emails (e.g., use forms instead).
+JavaScript-heavy sites are not supported (BeautifulSoup limitation).
 
-If fewer than 10 businesses are found, the Excel output includes a note:
-"Less than 10 record available for this category".
+Website blocking may occur → handled using User-Agent headers.
 
-⚠️ Challenges Faced
+🛠️ Challenges Faced
+Dynamic content loading
 
-Dynamic content loading → Some pages use JavaScript, not supported by BeautifulSoup.
+Hidden / obfuscated emails
 
-Obfuscated emails → e.g., info [at] company dot com.
+Duplicate business entries
 
-Duplicates → Filtered out during scraping.
+Varied website structures
 
-Scraper blocking → Required using headers (User-Agent).
-
-Varied page structures → Different websites required flexible selectors.
-
-✅ Example Output (Excel)
-Business Name	Email	Phone	Website	Address	Source URL	Category
-ABC Coaching	info@abccoach.com
-	(123) 456-7890	https://abccoach.com
-	123 Main St, Kansas City	Enigma URL	Coaching Institutes
-XYZ Academy	contact@xyz.com
-	(987) 654-3210	https://xyzacademy.com
-	45 Elm St, Wichita, KS	Enigma URL	Coaching Institutes
